@@ -1,0 +1,11 @@
+.card-container {
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px;
+    margin-bottom: 35px;
+}
+
+.card-bold {
+    font-weight: 700;
+    text-transform: uppercase;
+}
