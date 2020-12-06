@@ -1,10 +1,8 @@
 const express = require('express');
 const app = express();
-const cors = require('cors')
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const expressValidator = require('express-validator'); 
-app.use(cors())
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -18,12 +16,8 @@ app.use(methodOverride(function (req, res) {
 }));
 
 app.use(express.json());
-
 const rotas = require('../app/routes/routes');
 rotas(app);
-
-const arduino = require('../arduino/arduino');
-arduino();
 
 app.use(function (req, resp, next) {
     return resp.status(404).end();

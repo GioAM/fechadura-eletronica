@@ -6,7 +6,8 @@ class CartaoDao {
         this._db = db;
     }
     
-    adiciona(apelido, rfid, usuario_id) {
+    adiciona(cartao) {
+        console.log(cartao);
         return new Promise((resolve, reject) => {
             this._db.run(`
                 INSERT INTO cartao (
@@ -16,9 +17,9 @@ class CartaoDao {
                 ) values (?,?,?)
                 `,
                 [
-                    apelido,
-                    rfid,
-                    usuario_id
+                    cartao.apelido,
+                    cartao.rfid,
+                    cartao.usuario_id
                 ],
                 function (err) {
                     if (err) {
@@ -26,7 +27,7 @@ class CartaoDao {
                         return reject('Não foi possível adicionar o cartão!');
                     }
 
-                    return resolve(this.lastID);
+                    resolve();
                 }
             )
         });
@@ -50,33 +51,11 @@ class CartaoDao {
         return new Promise((resolve, reject) => {
             this._db.get(
                 `
-                    SELECT cartao.id as "id", cartao.apelido as "apelido", cartao.rfid as "rfid",
-                    usuario.nome as "usuario_nome", usuario.id as "usuario_id"
-                    FROM cartao
-                    LEFT JOIN usuario ON cartao.usuario = usuario.id
-                    WHERE cartao.id = ?
-                `,
-                [id],
-                (erro, cartao) => {
-                    if (erro) {
-                        return reject('Não foi possível encontrar o cartao!');
-                    }
-                    return resolve(cartao);
-                }
-            );
-        });
-    }
-
-    buscaPorRfid(rfid) {
-
-        return new Promise((resolve, reject) => {
-            this._db.get(
-                `
                     SELECT *
                     FROM cartao
-                    WHERE  rfid = ?
+                    WHERE id = ?
                 `,
-                [rfid],
+                [id],
                 (erro, cartao) => {
                     if (erro) {
                         return reject('Não foi possível encontrar o cartao!');
@@ -113,14 +92,12 @@ class CartaoDao {
             this._db.run(`
                 UPDATE cartao SET
                 apelido = ?,
-                rfid = ?,
-                usuario = ?
+                rfid = ?
                 WHERE id = ?
             `,
             [
                 cartao.body.apelido,
                 cartao.body.rfid,
-                cartao.body.usuario_id,
                 cartao.params.id
             ],
             erro => {
