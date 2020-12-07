@@ -16,7 +16,7 @@ export default props =>
                 <hr className="title-line"/>
                 <Col sm={10} md={10} lg={10} className="content-container">
                     <h3 className="title-about">Trabalho desenvolvido para a máteria de Laboratório de Desenvolvimento</h3>
-                    <p className="text-about"><span className="sub-about">Acadêmicos:</span> <a href="https://github.com/GioAM">Giovani Meneguel</a>, <a href="https://github.com/leticiapmay99">Letícia May</a> e <a href="https://github.com/tiagobellaver">Tiago Bellaver</a></p>
+                    <p className="text-about"><span className="sub-about">Acadêmicos:</span> <a href="https://github.com/GioAM">Giovani Meneguel</a> e <a href="https://github.com/leticiapmay99">Letícia May</a></p>
                     <p className="text-about"><span className="sub-about">Tema do Trabalho:</span> Sistema de Segurança utilizando Tecnologia RFID</p>
                     <p className="text-about"><span className="sub-about">Descrição do problema:</span> Criação de um sistema de segurança para acesso a determinado lugar com níveis de segurança/acesso. Utilizando um
                     cartão com RFID será possível criar níveis de acesso para determinados usuários.</p>
