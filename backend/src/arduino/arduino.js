@@ -1,7 +1,7 @@
 var serialport = require('serialport');
 var Readline = serialport.parsers.Readline;
 var parser = new Readline(); 
-var path = 'COM5' ;
+var path = 'COM3' ;
 var dispositivo = 1;
 
 module.exports = () => {
